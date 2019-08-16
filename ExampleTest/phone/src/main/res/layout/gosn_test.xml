@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button
+        android:id="@+id/bt_gosn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="生成json"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <Button
+        android:id="@+id/bt_gosn_array"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="生成数组json"
+        app:layout_constraintLeft_toRightOf="@id/bt_gosn_start"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="10dp"
+        />
+
+</android.support.constraint.ConstraintLayout>
