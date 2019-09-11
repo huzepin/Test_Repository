@@ -1,1 +1,1 @@
-include ':app', ':animators', ':phone','JavaTest'
+include ':app', ':animators', ':phone', ':notebook','JavaTest'

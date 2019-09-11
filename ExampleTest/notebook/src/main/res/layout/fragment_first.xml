@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_add_model"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:background="@color/green"
+        android:layout_margin="7dp"
+        >
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/adds"
+            android:layout_marginRight="5dp"
+            />
+       <TextView
+           android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加模板"
+           android:textColor="@color/white_"
+        />
+    </LinearLayout>
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/ry_list"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/ll_add_model"
+       ></android.support.v7.widget.RecyclerView>
+</android.support.constraint.ConstraintLayout>
