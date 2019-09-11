@@ -30,7 +30,6 @@ public class ListModel extends Model {
     }
 
 
-
     public int itemCount() {
         return list.size();
     }

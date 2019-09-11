@@ -41,9 +41,6 @@ public class GoodModel_ItemHolder extends ItemHolder implements View.OnClickList
     @Override
     public void onPropertyChanged(Model model, String propertyName) {
         super.onPropertyChanged(model, propertyName);
-
-
-
     }
 
 

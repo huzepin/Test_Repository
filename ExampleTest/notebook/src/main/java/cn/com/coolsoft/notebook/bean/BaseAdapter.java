@@ -28,6 +28,7 @@ public class BaseAdapter extends RecyclerView.Adapter implements ListChangedList
         } catch (Exception ex) {
             throw new RuntimeException();
         }
+        listModel.addListListener(this);
         //this.layoutInflater = layoutInflater;// LayoutInflater.from(activity);
         this.itemResourceId = itemResourceId;
 

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import cn.com.coolsoft.notebook.bean.GoodPosition;
@@ -87,6 +88,14 @@ public class EditModelDialogActivity extends AppCompatActivity implements View.O
                     Toast.makeText(this, "模板名不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+               List<Goodmode> goodmode =Goodmode.find(Goodmode.class,"name = ?",modelName);
+                if (goodmode.size() > 0){
+                    Toast.makeText(this, "模板名重复，请重新命名", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
             }
 
             if (goodName.equals("") || goodName == null) {

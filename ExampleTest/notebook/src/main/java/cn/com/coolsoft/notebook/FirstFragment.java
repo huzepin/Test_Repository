@@ -105,6 +105,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 List<Goodmode> goodmodes = Goodmode.listAll(Goodmode.class);
                 if (goodmodes != null)
                 listModel.addItem(goodmodes.get(goodmodes.size()-1));
+                ListView.scrollToPosition(goodmodes.size()-1);
               //  List<GoodPosition> goodPositionList = GoodPosition.listAll(GoodPosition.class);
                // List<GoodPosition> user = GoodPosition.find(GoodPosition.class, "modeid = ?", goodmodes.get(0).getId()+"");
 

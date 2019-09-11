@@ -89,7 +89,7 @@
         >
 
         <EditText
-            android:id="@+id/et_position"
+            android:id="@+id/et_buyer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="购买人"
@@ -104,7 +104,7 @@
             android:layout_weight="1"
             />
         <Button
-            android:id="@+id/bt_add"
+            android:id="@+id/bt_addsave"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="保存"
@@ -114,12 +114,14 @@
 
     </LinearLayout>
 
- <android.support.v7.widget.RecyclerView
+ <cn.com.coolsoft.notebook.utils.SlideRecyclerView
      android:id="@+id/ry_add_list"
      android:layout_width="match_parent"
-     android:layout_height="wrap_content"
+     android:layout_height="match_parent"
      android:layout_marginLeft="10dp"
      android:layout_marginRight="10dp"
-     ></android.support.v7.widget.RecyclerView>
+     android:scrollbars="none"
+     android:overScrollMode="never"
+     ></cn.com.coolsoft.notebook.utils.SlideRecyclerView>
 
 </LinearLayout>

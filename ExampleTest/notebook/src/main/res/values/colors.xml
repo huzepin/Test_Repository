@@ -8,8 +8,10 @@
     <color name="red">#FF1E1E</color>
     <color name="white">#FFFFFF</color>
     <color name="white_">#EBEBEB</color>
+    <color name="white_f">#A8919191</color>
     <color name="white_s">#7BD69A</color>
     <color name="bt_bg">#44F57B</color>
+    <color name="bt_order_bg">#97E1E72D</color>
 
 
 </resources>
