@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,26 +7,119 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
+  <com.example.phone_9.customview.MyLinearLayouts
+      android:id="@+id/ll_but"
+      android:layout_width="200dp"
+      android:layout_height="100dp"
+      android:background="@color/colorPrimary"
+      android:layout_gravity="center"
+      android:orientation="vertical"
+      >
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="单个下载"
-        android:onClick="singleDownload"
-        android:layout_marginTop="20dp"/>
+        android:text="2156151251251251251"
+        android:background="@color/colorAccent"
+        />
 
-    <Button
-        android:layout_width="wrap_content"
+
+
+  </com.example.phone_9.customview.MyLinearLayouts>
+
+  <com.example.phone_9.customview.MyLinearLayoutInners
+      android:id="@+id/ll_zi"
+      android:layout_width="100dp"
+      android:layout_height="50dp"
+      android:layout_below="@id/ll_but"
+      android:background="@color/colorAccent"></com.example.phone_9.customview.MyLinearLayoutInners>
+
+
+  <com.example.phone_9.customview.MyScrollView
+      android:id="@+id/scroll"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/ll_zi"
+      >
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="多个下载"
-        android:onClick="multipleDownload"
-        android:layout_marginTop="20dp"/>
+        android:orientation="vertical"
+        >
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="425454"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+      
+      <ListView
+          android:id="@+id/listview"
+          android:layout_width="match_parent"
+          android:layout_height="200dp"
+          ></ListView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="限制下载个数"
-        android:onClick="limitDownload"
-        android:layout_marginTop="20dp"
-        android:visibility="visible"/>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="425454"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
 
-</LinearLayout>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="425454"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="425454"
+          />
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="80dp"
+          android:text="滚动视图里面的"
+          />
+    </LinearLayout>
+
+  </com.example.phone_9.customview.MyScrollView>
+
+</RelativeLayout>

@@ -35,7 +35,7 @@ public class BaseAdapter extends RecyclerView.Adapter implements ListChangedList
     }
 
     public void setActivity(){}
-
+    //java.lang.ClassCastException: cn.com.coolsoft.notebook.MainActivity cannot be cast to cn.com.coolsoft.notebook.bean.GoodOrder_ItemHolder$OnClickSlideDeleteListener
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

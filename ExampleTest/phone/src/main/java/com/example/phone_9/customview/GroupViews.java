@@ -26,6 +26,10 @@ public class GroupViews extends ViewGroup {
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
     }
+    //onInterceptTouchEvent
+
+
+
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {

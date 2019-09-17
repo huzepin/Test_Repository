@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.phone_9.R;
@@ -140,4 +141,8 @@ public class ProgressBar extends View {
         // 刷新 invalidate
         invalidate();
     }
+
+
+
+
 }

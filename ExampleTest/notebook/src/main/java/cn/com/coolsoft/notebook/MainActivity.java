@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import cn.com.coolsoft.notebook.bean.GoodOrder_ItemHolder;
+
+public class MainActivity extends AppCompatActivity implements GoodOrder_ItemHolder.OnClickSlideDeleteListener {
     private TextView mTextMessage;
     private FrameLayout FramePage;
     private FirstFragment f1;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         FramePage = findViewById(R.id.FramePage);
 
         android.support.v4.app.FragmentTransaction  transaction = getSupportFragmentManager().beginTransaction();
-        f1 = FirstFragment.newInstance("发现",R.layout.fragment_first);
+        f1 = FirstFragment.newInstance("",R.layout.fragment_first);
         transaction.add(R.id.FramePage,f1);
         transaction.commit();
 
@@ -41,26 +43,29 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.navigation_home:
                         if(f1==null){
-                            f1 = FirstFragment.newInstance("发现",R.layout.fragment_first);
+                            f1 = FirstFragment.newInstance("",R.layout.fragment_first); //编辑
                             transaction.add(R.id.FramePage,f1);
                         }else{
                             transaction.show(f1);
+                            f1.onResume();
                         }
                         break;
                     case R.id.navigation_dashboard:
                         if(f2==null){
-                            f2 =SecondFragment.newInstance("我的",R.layout.fragment_second);//"第二个Fragment"
+                            f2 =SecondFragment.newInstance("",R.layout.fragment_second);//"第二个Fragment"  记录
                             transaction.add(R.id.FramePage,f2);
                         }else{
                             transaction.show(f2);
+                            f2.onResume();
                         }
                         break;
                     case R.id.navigation_notifications:
                         if(f3==null){
-                            f3 = ThreeFragment.newInstance("关于",R.layout.fragment_three);//"第三个Fragment"
+                            f3 = ThreeFragment.newInstance("",R.layout.fragment_three);//"第三个Fragment"  账本
                             transaction.add(R.id.FramePage,f3);
                         }else{
                             transaction.show(f3);
+                            f3.onResume();
                         }
                         break;
                 }
@@ -72,18 +77,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //隐藏所有Fragment
     public void hideAllFragment(FragmentTransaction transaction){
         if(f1!=null){
             transaction.hide(f1);
         }
         if(f2!=null){
+
             transaction.hide(f2);
         }
         if(f3!=null){
+
             transaction.hide(f3);
         }
+
+    }
+
+
+    //记录模板的
+    @Override
+    public void ondelet(Object o) {
 
     }
 }

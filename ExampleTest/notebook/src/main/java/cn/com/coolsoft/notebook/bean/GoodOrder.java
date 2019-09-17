@@ -2,6 +2,8 @@ package cn.com.coolsoft.notebook.bean;
 
 import com.orm.SugarRecord;
 
+import java.util.Date;
+
 /**
  * @author admin
  * @time 2019/9/11 13
@@ -15,11 +17,11 @@ public class GoodOrder extends SugarRecord {
     private String price;  // 价格
     private String weight;  //重量或件
     private String isbuy;  // 是否付款  1 已付款
-    private String time;  //下单时间
+    private Date time;  //下单时间
 
     public GoodOrder(){}
 
-    public GoodOrder(String modelid, String positionid,String positionname, String buyer, String price, String weight,String isbuy,String time) {
+    public GoodOrder(String modelid, String positionid,String positionname, String buyer, String price, String weight,String isbuy,Date time) {
         this.modelid = modelid;
         this.positionid = positionid;
         this.positionname = positionname;
@@ -89,11 +91,11 @@ public class GoodOrder extends SugarRecord {
     }
 
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 }

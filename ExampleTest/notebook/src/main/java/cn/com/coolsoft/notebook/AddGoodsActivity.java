@@ -90,15 +90,13 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
-
-
          goods = GoodPosition.find(GoodPosition.class, "modeid = ?", GoodModel_id);
-
         if (goods.size() == 1 && goods.get(0).getName().equals("")){
             mSpinner.setVisibility(View.INVISIBLE);
             add_position.setVisibility(View.GONE);
         }
         tv_goodprice.setText("价格："+goods.get(0).getPrice()+"/"+goods.get(0).getWeight());
+        price = goods.get(0).getPrice();
         tv_unit.setText("单位："+goods.get(0).getWeight());
         mData = new ArrayList();
         for (GoodPosition  str: goods) {
@@ -192,8 +190,11 @@ public class AddGoodsActivity extends AppCompatActivity implements View.OnClickL
 
             SimpleDateFormat _YmdHmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
             String time = _YmdHmFormat.format(new Date());
-
-            GoodOrder goodOrder = new GoodOrder(GoodModel_id,positionid,positionname,buyer,price,weight,"0",time);
+            if (price.equals("") || price == null){
+                Toast.makeText(this,"价格不能为空",Toast.LENGTH_SHORT).show();
+                return;
+            }
+            GoodOrder goodOrder = new GoodOrder(GoodModel_id,positionid,positionname,buyer,price,weight,"0",new Date());
             long status = goodOrder.save();
             if (status > 0){
                 listModel.addItem(goodOrder);

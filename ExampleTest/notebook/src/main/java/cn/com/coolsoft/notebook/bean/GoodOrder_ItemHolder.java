@@ -6,6 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import cn.com.coolsoft.notebook.AddGoodsActivity;
 import cn.com.coolsoft.notebook.R;
 
@@ -31,7 +35,7 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
         name = itemView.findViewById(R.id.tv_name);
         price = itemView.findViewById(R.id.tv_price);
         weight = itemView.findViewById(R.id.tv_weight);
-        total = itemView.findViewById(R.id.tv_total);
+        total  = itemView.findViewById(R.id.tv_total);
         is_buy = itemView.findViewById(R.id.is_buy);
         delete = itemView.findViewById(R.id.delete);
         tv_ordertime = itemView.findViewById(R.id.tv_ordertime);
@@ -40,6 +44,7 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
         listener = (OnClickSlideDeleteListener) context;
         mcontext = context;
     }
+
     GoodOrder order = null;
 
     @Override
@@ -51,7 +56,9 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
         name.setText(order.getPositionname());
         price.setText(order.getPrice());
         weight.setText(order.getWeight());
-        tv_ordertime.setText("下单时间："+order.getTime());
+        SimpleDateFormat _YmdHmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
+        String time = _YmdHmFormat.format(order.getTime());
+        tv_ordertime.setText("下单时间："+time);
         Double totals = Double.parseDouble(order.getWeight()) * Double.parseDouble(order.getPrice());
         total.setText(totals.toString());
 
@@ -68,7 +75,15 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
 
     @Override
     public void onPropertyChanged(Model model, String propertyName) {
-        super.onPropertyChanged(model, propertyName);
+        switch (propertyName) {
+            case "updata":
+             //   is_buy.setText("已付款");
+              //  is_buy.setBackgroundResource(R.color.white_f);
+                break;
+            case "sum":
+               // setSumCtrl();
+                break;
+        }
     }
 
 
@@ -86,7 +101,17 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
             if (del)
             listener.ondelet(order);
         }else if (v.getId() == R.id.is_buy){
-
+            if (order.getIsbuy().equals("1")){
+                return;
+            }
+            long id = order.getId();
+            GoodOrder order1 = GoodOrder.findById(GoodOrder.class,id);
+            order1.setIsbuy("1");
+            long update = order1.save();   // updata 不能用该方法
+            if (update > 0){
+                is_buy.setText("已付款");
+                is_buy.setBackgroundResource(R.color.white_f);
+            }
         }
     }
 

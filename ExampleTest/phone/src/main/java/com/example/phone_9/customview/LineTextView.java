@@ -60,4 +60,7 @@ public class LineTextView extends android.support.v7.widget.AppCompatTextView {
     }
 
 
+    //onInterceptTouchEvent
+
+
 }

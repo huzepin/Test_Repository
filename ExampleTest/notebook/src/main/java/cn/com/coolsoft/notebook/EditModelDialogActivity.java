@@ -70,7 +70,6 @@ public class EditModelDialogActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
-
         if (v.getId() == R.id.bt_cancel){
             finish();
         }else if (v.getId() == R.id.bt_save) {
