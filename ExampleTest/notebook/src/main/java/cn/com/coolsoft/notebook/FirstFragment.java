@@ -75,28 +75,26 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStart() {
         super.onStart();
-
         Goodmode goodmode = new Goodmode() ;
 
-        Log.e(TAG,"==========onStart");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.e(TAG,"==========onResume");
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.e(TAG,"==========onStop");
+
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e(TAG,"==========onDestroy");
+
     }
 
     @Override
@@ -106,7 +104,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                 if (goodmodes != null)
                 listModel.addItem(goodmodes.get(goodmodes.size()-1));
                 ListView.scrollToPosition(goodmodes.size()-1);
-              //  List<GoodPosition> goodPositionList = GoodPosition.listAll(GoodPosition.class);
+               // List<GoodPosition> goodPositionList = GoodPosition.listAll(GoodPosition.class);
                // List<GoodPosition> user = GoodPosition.find(GoodPosition.class, "modeid = ?", goodmodes.get(0).getId()+"");
 
             }

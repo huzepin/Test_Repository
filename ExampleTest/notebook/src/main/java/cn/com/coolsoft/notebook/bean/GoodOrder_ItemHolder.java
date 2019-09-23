@@ -1,6 +1,8 @@
 package cn.com.coolsoft.notebook.bean;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +51,7 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
 
     @Override
     public void onBind(Object item) {
-        super.onBind(item);
+        super.onBind(item); //1568771440563
          order = (GoodOrder)item;
         //goodmodeid = String.valueOf(order.getId());
         buyer.setText(order.getBuyer());
@@ -58,6 +60,9 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
         weight.setText(order.getWeight());
         SimpleDateFormat _YmdHmFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US);
         String time = _YmdHmFormat.format(order.getTime());
+        Date date = order.getTime();
+        long tim = date.getTime();
+
         tv_ordertime.setText("下单时间："+time);
         Double totals = Double.parseDouble(order.getWeight()) * Double.parseDouble(order.getPrice());
         total.setText(totals.toString());
@@ -104,16 +109,37 @@ public class GoodOrder_ItemHolder extends ItemHolder implements View.OnClickList
             if (order.getIsbuy().equals("1")){
                 return;
             }
-            long id = order.getId();
-            GoodOrder order1 = GoodOrder.findById(GoodOrder.class,id);
-            order1.setIsbuy("1");
-            long update = order1.save();   // updata 不能用该方法
-            if (update > 0){
-                is_buy.setText("已付款");
-                is_buy.setBackgroundResource(R.color.white_f);
-            }
+
+            AlertDialog.Builder dialog = new AlertDialog.Builder(mcontext);
+            dialog.setMessage("确认是否付款？");
+            dialog.setTitle("提示");
+            dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    long id = order.getId();
+                    GoodOrder order1 = GoodOrder.findById(GoodOrder.class,id);
+                    order1.setIsbuy("1");
+                    long update = order1.save();   // updata 不能用该方法
+                    if (update > 0){
+                        is_buy.setText("已付款");
+                        is_buy.setBackgroundResource(R.color.white_f);
+                    }
+
+                }
+            });
+
+            dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.create().show();
+
         }
     }
+
 
 
     public static int dip2px(Context context, float dpValue) {

@@ -1,6 +1,9 @@
 package com.example.phone_9;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.view.ViewPager;
@@ -10,10 +13,14 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.phone_9.customview.HVListView;
 import com.example.phone_9.customview.MyLinearLayoutInners;
@@ -21,6 +28,7 @@ import com.example.phone_9.customview.MyLinearLayouts;
 import com.example.phone_9.customview.MyScrollView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
@@ -57,8 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 android.R.layout.simple_spinner_item, mData);
         // adapter.setDropDownViewResource(R.drawable.dropdown);
         listView.setAdapter(adapter);
-
-
     }
 
     @Override
@@ -114,11 +120,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.ll_but){
 
-            Log.d("MainActivity","=============大的视图");
+            Calendar ca = Calendar.getInstance();
+             final int mYear = ca.get(Calendar.YEAR);
+             final int mMonth = ca.get(Calendar.MONTH);
+             final int mDay = ca.get(Calendar.DAY_OF_MONTH);
+             int hour = ca.get(Calendar.HOUR);//获取小时
+             int minute = ca.get(Calendar.MINUTE);//获取分钟
+             int seconds = ca.get(Calendar.SECOND);//获取秒钟
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            Toast.makeText(MainActivity.this,"="+year+"-"+month+"-"+dayOfMonth,Toast.LENGTH_SHORT).show();
+                        }
+                    },
+                    mYear, mMonth, mDay);
+
+            datePickerDialog.show();
+
+          new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                //实现监听方法
+                @Override
+                public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                    //设置文本显示内容
+                    Toast.makeText(MainActivity.this,"当前时间："+mYear+"年"+mMonth+"月"+mDay+"日   "+i+":"+i1,Toast.LENGTH_SHORT).show();
+                }
+            },hour,minute,true).show();//记得使用show才能显示
+
+
         }else if (v.getId() == R.id.ll_zi){
-            Log.d("MainActivity","=============小的视图");
+
         }else if (v.getId() == R.id.tv_title){
-            Log.d("MainActivity","=============子视图");
+
         }
     }
 

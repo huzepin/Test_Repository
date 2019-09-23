@@ -36,11 +36,12 @@ public class MonitorReceiver extends BroadcastReceiver {
             sintent.setPackage("com.example.phone_9");
             context.stopService(sintent);
         }
+
         if (Intent.ACTION_MEDIA_MOUNTED.equals(intent.getAction())){
             Log.v("MonitorReceiver","========扫描sd卡");
         }
-        if (intent.getAction().equals(Intent.ACTION_SHUTDOWN)) {
 
+        if (intent.getAction().equals(Intent.ACTION_SHUTDOWN)) {
             Log.i("MonitorReceiver", "========关机了");
         }
     }

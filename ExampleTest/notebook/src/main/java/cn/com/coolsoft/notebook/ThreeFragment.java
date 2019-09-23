@@ -1,6 +1,12 @@
 package cn.com.coolsoft.notebook;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,12 +20,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.orm.SugarContext;
 import com.orm.SugarRecord;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cn.com.coolsoft.notebook.bean.BaseAdapter;
@@ -84,6 +100,7 @@ public class ThreeFragment extends Fragment implements View.OnClickListener {
         list.setHasFixedSize(true);
         list.setAdapter(adapter);
 
+
         list.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
@@ -94,7 +111,6 @@ public class ThreeFragment extends Fragment implements View.OnClickListener {
         });
 
         return view;
-
     }
 
 
@@ -105,22 +121,109 @@ public class ThreeFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    long order_time ;
+    private String buyer;
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tv_model_type){
-            PlatformUtil.shareQQ(getContext(),"23156156");
-        }else if (v.getId() == R.id.tv_time_type){
-            PlatformUtil.shareWechatFriend(getContext(),"564848");
-        }else if (v.getId() == R.id.tv_buyer_type){
+            startActivity(new Intent(mcontext,GoodModelActivity.class));
+            //PlatformUtil.shareQQ(getContext(),"23156156");
+//            new TimePickerDialog(mcontext, new TimePickerDialog.OnTimeSetListener() {
+//                //实现监听方法
+//                @Override
+//                public void onTimeSet(TimePicker timePicker, int i, int i1) {
+//                    //设置文本显示内容
+//                   // Toast.makeText(MainActivity.this,"当前时间："+mYear+"年"+mMonth+"月"+mDay+"日   "+i+":"+i1,Toast.LENGTH_SHORT).show();
+//                }
+//            },hour,minute,true).show();//记得使用show才能显示
 
+
+        }else if (v.getId() == R.id.tv_time_type){
+           // PlatformUtil.shareWechatFriend(getContext(),"564848");
+            Calendar ca = Calendar.getInstance();
+            final int mYear = ca.get(Calendar.YEAR);
+            final int mMonth = ca.get(Calendar.MONTH);
+            final int mDay = ca.get(Calendar.DAY_OF_MONTH);
+            int hour = ca.get(Calendar.HOUR);//获取小时
+            int minute = ca.get(Calendar.MINUTE);//获取分钟
+            int seconds = ca.get(Calendar.SECOND);//获取秒钟
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(mcontext,
+                    new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String str = year+"-"+(month+1)+"-"+(dayOfMonth-1)+" 16:00:00";  // 00:00:00
+                            Date date = null;
+                            try {
+                                date = format.parse(str);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            order_time = date.getTime();
+                            new Thread(timerun).start();
+                        }
+                    },mYear, mMonth, mDay);
+            datePickerDialog.show();
+
+
+        }else if (v.getId() == R.id.tv_buyer_type){
+            final EditText et = new EditText(mcontext);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+            dialog.setMessage("请输入购买人的姓名");
+            dialog.setTitle("按购买人搜索");
+            dialog.setView(et);
+            dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                 dialog.dismiss();
+                 String name = et.getText().toString().trim();
+                    buyer = name;
+                   new Thread(namerun).start();
+                }
+            });
+
+            dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.create().show();
         }
     }
 
 
+    Runnable timerun = new Runnable() {
+        @Override
+        public void run() {
+            List<GoodOrder> goodmodes = GoodOrder.findWithQuery(GoodOrder.class,"SELECT * FROM GOOD_ORDER where time > ?",order_time+"");
+            listModel.list = (ArrayList) goodmodes;
+            Message message = Message.obtain();
+            message.what = 0;
+            handler.sendMessage(message);
+        }
+    };
+
+    Runnable namerun = new Runnable() {
+        @Override
+        public void run() {
+            List<GoodOrder> goodmodes = GoodOrder.findWithQuery(GoodOrder.class,"SELECT * FROM GOOD_ORDER where buyer = ?",buyer);
+            listModel.list = (ArrayList) goodmodes;
+            Message message = Message.obtain();
+            message.what = 0;
+            handler.sendMessage(message);
+        }
+    };
+
     class InnerThread extends Thread{
         @Override
         public void run() {
-            List<GoodOrder> goodmodes = GoodOrder.findWithQuery(GoodOrder.class,"SELECT * FROM GOOD_ORDER order by time desc limit 10",null);
+          //  List<GoodOrder> goodmodes = GoodOrder.findWithQuery(GoodOrder.class,"SELECT * FROM GOOD_ORDER order by time desc limit 10",null);
+            long time = 1568771440563l;
+            Date date = new Date(time);
+            List<GoodOrder> goodmodes = GoodOrder.findWithQuery(GoodOrder.class,"SELECT * FROM GOOD_ORDER where time > ?","1568771440563");
            // List<GoodOrder> goodmodes = GoodOrder.listAll(GoodOrder.class);
             listModel.list = (ArrayList) goodmodes;
             Message message = Message.obtain();

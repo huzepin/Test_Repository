@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="exception_tip">很抱歉,程序出现异常,即将重启.</string>
+    <string name="setting">设置</string>
+    <string name="grant_manually">已禁用权限，请手动授予</string>
+    <string name="cancel">取消</string>
+    <string name="no_permission">权限不通过!</string>
+    <string name="download">下载</string>
 </resources>

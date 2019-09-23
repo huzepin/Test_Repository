@@ -148,16 +148,6 @@ public class SecondFragment extends Fragment {
             List<GoodOrder> goodmodes = GoodOrder.listAll(GoodOrder.class);
             listModel.list = (ArrayList) goodmodes;
             Message message = Message.obtain();
-            long current = Thread.currentThread().getId();
-
-//            Runnable runnable = new Runnable() {
-//                @Override
-//                public void run() {
-//                    long current = Thread.currentThread().getId();
-//                    adapter.notifyDataSetChanged();
-//                }
-//            };
-//            handler.post(runnable);
             message.what = 0;
             handler.sendMessage(message);
         }

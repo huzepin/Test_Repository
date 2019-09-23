@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.com.coolsoft.notebook">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -30,6 +34,8 @@
         <activity android:name=".EditModelDialogActivity"
             android:theme="@style/dialog_style"/>
         <activity android:name=".AddGoodsActivity"/>
+
+        <activity android:name=".GoodModelActivity"/>
     </application>
 
 </manifest>
