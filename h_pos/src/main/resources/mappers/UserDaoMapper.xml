@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，一般保证命名空间唯一 -->
+<mapper namespace="com.cn.hzp.pos.dao.impl.UserDao">
+    <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+       resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
+         private String phone;
+    private String password;
+    private String type;
+    private String create_time;
+    private String nickname;
+    private String img_url;
+    private String last_login_date;
+    private String token;
+    private String sex;
+    private String qq;
+    private String weixin;
+    private String mail;
+     -->
+    <!--<select id="queryUserById" resultType="com.zpc.mybatis.pojo.User">-->
+    <!--select * from tb_user where id = #{id}-->
+    <!--</select>-->
+
+    <!--使用别名-->
+    <select id="queryUserByPhone" resultType="com.cn.hzp.pos.bean.User">
+      select tuser.phone as phone, tuser.password as password,
+       tuser.types as types,tuser.create_time as create_time,
+       tuser.nickname as nickname,tuser.img_url as img_url,
+       tuser.last_login_date as last_login_date,tuser.token as token,
+       tuser.sex as sex,tuser.qq as qq,tuser.weixin as weixin,tuser.mail as mail
+       from t_users tuser where tuser.phone = #{phone};
+   </select>
+
+    <select id="queryUserAll" resultType="com.cn.hzp.pos.bean.User">
+        select * from t_users;
+    </select>
+
+    <!-- 使用phone pw 查询-->
+    <select id="phoneAndPw" resultType="com.cn.hzp.pos.bean.User">
+        select *  from t_users
+        where phone=#{phone} and password =#{password};
+    </select>
+    <!-- 使用 token查询-->
+    <select id="token" resultType="com.cn.hzp.pos.bean.User">
+         select * from t_users
+         where token=#{token};
+    </select>
+
+    <!--插入数据
+     userid;
+     username;
+     age;
+     sex;-->
+    <insert id="insertUser" parameterType="com.cn.hzp.pos.bean.User">
+        INSERT INTO t_users (phone,password,types,create_time,
+        nickname,img_url,last_login_date,token,sex,qq,weixin,mail)
+        VALUES(#{phone},#{password},#{types},#{create_time},#{nickname},#{img_url},#{last_login_date},#{token},#{sex},#{qq},#{weixin},#{mail});
+    </insert>
+
+    <update id="updateUser" parameterType="com.cn.hzp.pos.bean.User">
+        UPDATE t_users
+        <trim prefix="set" suffixOverrides=",">
+            <if test="token!=null">token = #{token},</if>
+            <if test="mail!=null">mail = #{mail},</if>
+            <if test="nickname!=null">nickname = #{nickname},</if>
+            <if test="img_url!=null">age = #{img_url},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+        </trim>
+        WHERE
+        (phone = #{phone});
+    </update>
+
+    <delete id="deleteUser">
+        delete from t_users where phone=#{phone}
+    </delete>
+</mapper>
+

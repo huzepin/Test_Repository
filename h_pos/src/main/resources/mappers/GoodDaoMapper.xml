@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，一般保证命名空间唯一 -->
+<mapper namespace="com.cn.hzp.pos.dao.impl.GoodDao">
+    <!-- statement，内容：sql语句。id：唯一标识，随便写，在同一个命名空间下保持唯一
+       resultType：sql语句查询结果集的封装类型,tb_user即为数据库中的表
+       public String flowId;
+    public String no;             //商品条码
+    public String name;           //名称
+    public String unit;           //单位
+    public BigDecimal originalPrice;//原价
+    public BigDecimal salePrice;  //销售价格 （会员价：当原价与现价不一）
+    public BigDecimal quantity;   //单品数量
+    public BigDecimal amount;    //非单品总金额
+    public String isFresh;       //是否生鲜
+     -->
+    <!--使用别名-->
+    <select id="queryGoodByNo" resultType="com.cn.hzp.pos.bean.Good">
+      select tgood.no as no, tgood.name as name,
+       tgood.unit as unit,tgood.originalPrice as originalPrice,
+       tgood.salePrice as salePrice,tgood.quantity as quantity,
+       tgood.isFresh as isFresh
+       from t_good tgood where tgood.no = #{no};
+   </select>
+
+    <select id="queryGoodAll" resultType="com.cn.hzp.pos.bean.Good">
+        select * from t_good;
+    </select>
+
+
+
+    <!--插入数据
+     userid;
+     username;
+     age;
+     sex;-->
+    <insert id="insertGood" parameterType="com.cn.hzp.pos.bean.Good">
+        INSERT INTO t_good (no,name,unit,originalPrice,salePrice,quantity,isFresh)
+        VALUES(#{no},#{name},#{unit},#{originalPrice},#{salePrice},#{quantity},#{isFresh});
+    </insert>
+
+    <update id="updateGood" parameterType="com.cn.hzp.pos.bean.Good">
+        UPDATE t_good
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">name = #{name},</if>
+            <if test="unit!=null">unit = #{unit},</if>
+            <if test="originalPrice!=null">originalPrice = #{originalPrice},</if>
+            <if test="salePrice!=null">salePrice = #{salePrice},</if>
+            <if test="quantity!=null">sex = #{quantity},</if>
+        </trim>
+        WHERE
+        (no = #{no});
+    </update>
+
+    <delete id="deleteGood">
+        delete from t_good where no=#{no}
+    </delete>
+</mapper>
+
