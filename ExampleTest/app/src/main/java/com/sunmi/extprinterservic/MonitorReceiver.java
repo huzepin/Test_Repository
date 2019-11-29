@@ -30,7 +30,6 @@ public class MonitorReceiver extends BroadcastReceiver {
             Log.v("MonitorReceiver","========扫描sd卡");
         }
         if (intent.getAction().equals(Intent.ACTION_SHUTDOWN)) {
-
             Log.i("MonitorReceiver", "========关机了");
         }
     }

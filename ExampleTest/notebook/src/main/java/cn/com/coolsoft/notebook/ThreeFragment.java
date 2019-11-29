@@ -166,8 +166,6 @@ public class ThreeFragment extends Fragment implements View.OnClickListener {
                         }
                     },mYear, mMonth, mDay);
             datePickerDialog.show();
-
-
         }else if (v.getId() == R.id.tv_buyer_type){
             final EditText et = new EditText(mcontext);
             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());

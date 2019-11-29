@@ -164,7 +164,7 @@ public class DownLoadButton extends Button {
 
         if(widthMode == MeasureSpec.EXACTLY){
             width = widthSize+getPaddingLeft()+getPaddingRight();
-        }else{
+        } else {
             width = textBound.width()+getPaddingLeft()+getPaddingRight();
         }
 

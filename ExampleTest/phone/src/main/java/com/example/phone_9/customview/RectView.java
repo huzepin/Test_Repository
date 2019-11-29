@@ -1,12 +1,15 @@
 package com.example.phone_9.customview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+
+import com.example.phone_9.R;
 
 /**
  * @author admin
@@ -31,6 +34,17 @@ public class RectView extends View {
         init();
     }
 
+    /**
+     * 当前View的位置
+     * @param l
+     * @param t
+     * @param r
+     * @param b
+     */
+    @Override
+    public void layout(int l, int t, int r, int b) {
+        super.layout(l, t, r, b);
+    }
 
     public void init(){
         mpaint.setColor(Color.BLACK);
@@ -48,7 +62,7 @@ public class RectView extends View {
 
         if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) { //当width 为wrap_content 默认为600 当height 为wrap_content 默认为100
             setMeasuredDimension(600, 100);
-        } else if (widthMode == MeasureSpec.AT_MOST) {//当height 为match_parent  当width 为wrap_content 默认为500
+        } else if (widthMode == MeasureSpec.AT_MOST) {  //当height 为match_parent  当width 为wrap_content 默认为500
             setMeasuredDimension(500, heightSize);
         } else if (heightMode == MeasureSpec.AT_MOST) { //当width 为match_parent  当height 为wrap_content 默认为200
             setMeasuredDimension(widthSize, 200);
