@@ -82,10 +82,48 @@ public class ProductController extends PublicController  {
          }else {
              return publicResult.msg;
          }
+    }  //127.0.0.1：54298
+
+    /**
+     * 增加批量商品
+     * @param list  [{"no":"12","name":"hu1","unit":"克","originalPrice":0.0,"salePrice":0.0,"quantity":10,"amount":1,"isFresh":"1"},
+     *               {"no":"123","name":"hu2","unit":"克","originalPrice":0.0,"salePrice":0.0,"quantity":10,"amount":1,"isFresh":"1"}]
+     * @return
+     * @throws JSONException
+     */
+    @RequestMapping(value = "/addGoodList",method = RequestMethod.POST)
+    public String addGoodList(@RequestParam("list") String list) throws JSONException {
+        JSONObject rt = new JSONObject();
+        PublicResult isNull  =isNull(list);
+        if (isNull.isSuccess) {
+         //   com.alibaba.fastjson.JSONArray lists= JSON.parseArray(list.toString());
+            ArrayList<Good> data = (ArrayList<Good>) JSON.parseArray(list,Good.class);
+            if (data.size() > 0 == false){
+                rt.put("code", Constant.CODE_PARAM_ERROR);
+                rt.put("msg", Constant.STRING_PARAM_ERROR);
+                return rt.toString();
+            }
+
+            int insert = goodDao.insertGoods(data);
+            if (insert > 0){
+                rt.put("code",Constant.CODE_SUCCESS);
+                rt.put("msg",Constant.STRING_SUCCESS);
+                return rt.toString();
+            }else {
+                rt.put("code", Constant.CODE_OTHER);
+                rt.put("msg",Constant.STRING_OTHER);
+                return rt.toString();
+            }
+
+
+        }else {
+                return  isNull.msg;
+        }
+
     }
 
     /**
-     * 接收json格式 {"":"","":""}
+     * 接收json格式 {"no":"12","name":"hu1","unit":"克","originalPrice":0.0,"salePrice":0.0,"quantity":10,"amount":1,"isFresh":"1"}
      * @param data
      * @return
      */
@@ -116,7 +154,7 @@ public class ProductController extends PublicController  {
         //BigDecimal amount = obj.getString("amount");
         String isFresh = (String) data.get("isFresh");
         if (isNull(no).isSuccess == false || isNull(name).isSuccess == false || originalPrice > 0 == false ||
-                salePrice > 0 == false ||  quantity > 0 == false|| isNull(isFresh).isSuccess ==false){
+            salePrice > 0 == false ||  quantity > 0 == false|| isNull(isFresh).isSuccess ==false){
 
             rt.put("code", Constant.CODE_PARAM_NULL);
             rt.put("msg", Constant.STRING_PARAM_NULL);

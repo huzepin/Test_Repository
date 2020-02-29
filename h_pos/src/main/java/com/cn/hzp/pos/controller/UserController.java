@@ -30,7 +30,7 @@ import java.util.Date;
 public class UserController extends PublicController{
    // @Autowired
   //  private UserDao userDao;
-
+// http://localhost:8080/user/login?password=123456&phone=15979978803
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(@RequestParam("phone") String phone,@RequestParam("password") String pw) throws JSONException {
         JSONObject obj = new JSONObject();

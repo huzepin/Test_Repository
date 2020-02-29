@@ -40,6 +40,20 @@
         INSERT INTO t_good (no,name,unit,originalPrice,salePrice,quantity,isFresh)
         VALUES(#{no},#{name},#{unit},#{originalPrice},#{salePrice},#{quantity},#{isFresh});
     </insert>
+    <insert id="insertGoods" parameterType="java.util.List">
+        insert into t_good (no,name,unit,originalPrice,salePrice,quantity,isFresh)
+        values
+        <foreach collection="list" index="index" item="item" open="(" separator="),(" close=")">
+            #{item.no},
+            #{item.name},
+            #{item.unit},
+            #{item.originalPrice},
+            #{item.salePrice},
+            #{item.quantity},
+            #{item.isFresh}
+        </foreach>
+    </insert>
+
 
     <update id="updateGood" parameterType="com.cn.hzp.pos.bean.Good">
         UPDATE t_good

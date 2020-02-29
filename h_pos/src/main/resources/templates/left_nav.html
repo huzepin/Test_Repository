@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <meta name="description" content="">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <meta name="robots" content="all,follow">-->
+<!--    &lt;!&ndash; Bootstrap CSS&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">-->
+<!--    &lt;!&ndash; Font Awesome CSS&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">-->
+<!--    &lt;!&ndash; Custom Font Icons CSS&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="css/font.css">-->
+<!--    &lt;!&ndash; Google fonts - Muli&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">-->
+<!--    &lt;!&ndash; theme stylesheet&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">-->
+<!--    &lt;!&ndash; Custom stylesheet - for your changes&ndash;&gt;-->
+<!--    <link rel="stylesheet" href="css/custom.css">-->
+<!--    &lt;!&ndash; Favicon&ndash;&gt;-->
+<!--    <link rel="shortcut icon" href="img/favicon.ico">-->
+<!--    &lt;!&ndash; Tweaks for older IEs&ndash;&gt;&lt;!&ndash;[if lt IE 9]>-->
+<!--    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
+<!--    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]&ndash;&gt;-->
+<!--</head>-->
+<body>
+
+    <!-- Sidebar Header-->
+    <div class="sidebar-header d-flex align-items-center">
+        <div class="avatar"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
+        <div class="title">
+            <h1 class="h5">Mark Stephen</h1>
+            <p>Web Designer</p>
+        </div>
+    </div>
+    <!-- Sidebar Navidation Menus--><span class="heading">Hu</span>
+    <ul class="list-unstyled">
+        <li class="index"><a href="index"> <i class="icon-home"></i>首页</a></li>
+        <li class="tables"><a href="tables"> <i class="icon-grid"></i>Tables </a></li>
+        <li class="charts"><a href="charts"> <i class="fa fa-bar-chart"></i>Charts </a></li>
+        <li class="forms"><a href="forms"> <i class="icon-padnote"></i>Forms </a></li>
+        <li class="Example dropdown"><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>库存管理</a>
+            <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                <li class="Page"><a href="#">查看库存</a></li>
+                <li class="Page"><a href="#">商品入库</a></li>
+                <li class="Page"><a href="#">商品检查</a></li>
+            </ul>
+        </li>
+        <li class="login"><a href="login"> <i class="icon-logout"></i>Login page </a></li>
+    </ul>
+<!--    <span class="heading">Extras</span>-->
+<!--    <ul class="list-unstyled">-->
+<!--        <li> <a href="#"> <i class="icon-settings"></i>Demo </a></li>-->
+<!--        <li> <a href="#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>-->
+<!--        <li> <a href="#"> <i class="icon-chart"></i>Demo </a></li>-->
+<!--    </ul>-->
+
+<script type="text/javascript">
+    var test = window.location.pathname;
+    if (test === "/index"){
+     //   var list = document.getElementsByTagName("li");
+        // $('.list-unstyled').find('li').each(function() {
+        //     console.log("===--------"+$(this).index());
+        // });
+
+        $(".index").addClass('active');
+
+        //$(".list-unstyled li").siblings('li').removeClass('active');
+
+    }else if (test === "/tables"){
+        $(".tables").addClass('active');
+    }else if (test === "/charts"){
+        $(".charts").addClass('active');
+    }else if (test === "/forms"){
+        $(".forms").addClass('active');
+    }
+    console.log("点击了左侧栏--------------"+test);
+    // $(function () {
+    //     $(".list-unstyled li").click(function() {
+    //       //  alert("ddd");
+    //         $(this).siblings('li').removeClass('active');
+    //          $(this).addClass('active');
+    //          console.log("点击了左侧栏--------------");
+    //     });
+    //
+    // });
+</script>
+</body>
+</html>

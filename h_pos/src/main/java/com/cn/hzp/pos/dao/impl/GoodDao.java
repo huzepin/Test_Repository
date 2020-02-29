@@ -3,6 +3,7 @@ package com.cn.hzp.pos.dao.impl;
 import com.cn.hzp.pos.bean.Good;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Mapper
@@ -27,6 +28,12 @@ public interface GoodDao {
      */
     public int insertGood(Good good);
 
+    /**
+     * 新增多个商品
+     *
+     * @param good
+     */
+    public int insertGoods(ArrayList<Good> good);
     /**
      * 更新用户信息
      *
