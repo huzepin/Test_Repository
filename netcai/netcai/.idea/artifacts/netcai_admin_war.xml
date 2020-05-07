@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="netcai-admin:war">
+    <output-path>$PROJECT_DIR$/netcai-admin/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>netcai-admin</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="netcai-admin.war">
+      <element id="artifact" artifact-name="netcai-admin:war exploded" />
+    </root>
+  </artifact>
+</component>

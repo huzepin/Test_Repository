@@ -4,7 +4,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.math.BigDecimal;
 
-import sun.rmi.runtime.Log;
+
 
 public class MyClass {
 

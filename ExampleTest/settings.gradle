@@ -1,1 +1,1 @@
-include ':app', ':animators', ':phone', ':notebook', ':appwidget','JavaTest'
+include ':app', ':animators', ':phone', ':notebook', ':appwidget', ':test_jni','JavaTest'

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试案例：测试返回值"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="3dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/b">
+        <EditText
+            android:id="@+id/et_szcip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcIP"
+            />
+        <EditText
+            android:id="@+id/et_port"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="uiPort"
+            />
+        <Button
+            android:id="@+id/bt_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="init_WfSDK"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/a"
+        >
+        <EditText
+            android:id="@+id/et_linenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="uiLineNum"
+            />
+
+        <Button
+            android:id="@+id/bt_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WFOSD_setOsdDisplayLineNum"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        >
+        <!--String szcip,int port,String szcosd,int iosdlen,int ix,int iy, short iColor,String szcCo-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcip"
+            android:layout_weight="1"
+            />
+        <EditText
+            android:id="@+id/et_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="port"
+            android:layout_weight="1"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/et_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcosd"
+            android:layout_weight="1"
+            />
+        <EditText
+            android:id="@+id/et_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="iosdlen"
+            android:layout_weight="1"
+            />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="ix"
+                android:layout_weight="1"
+                />
+            <EditText
+                android:id="@+id/et_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="iy"
+                android:layout_weight="1"
+                />
+            <EditText
+                android:id="@+id/et_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="iColor"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcCo"
+            />
+        <Button
+            android:id="@+id/bt_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WFOSD_set"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/c"
+        >
+
+        <EditText
+            android:id="@+id/et_clear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcip"
+
+            />
+        <EditText
+            android:id="@+id/et_clear2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="port"
+
+            />
+        <EditText
+            android:id="@+id/et_clear3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="szcCode"
+
+            />
+        <Button
+            android:id="@+id/bt_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WFOSD_clear"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>
