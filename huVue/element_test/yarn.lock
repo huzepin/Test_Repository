@@ -1404,6 +1404,10 @@ electron-to-chromium@^1.2.7:
   version "1.3.8"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.8.tgz#b2c8a2c79bb89fbbfd3724d9555e15095b5f5fb6"
 
+element-angular@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/element-angular/-/element-angular-0.7.6.tgz#9988006a0920dfd193915b841ed8b3d35d2906ac"
+
 element-ui@^2.3.4:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.3.4.tgz#d6d6b057a4acf4caa5e9fd9f1a78bd89c8845e4f"
@@ -2250,8 +2254,8 @@ lodash.uniq@^4.5.0:
   resolved "http://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
 lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.2.0:
-  version "4.17.4"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
 
 longest@^1.0.1:
   version "1.0.1"
