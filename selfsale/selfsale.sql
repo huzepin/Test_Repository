@@ -1,1 +1,0 @@
-`db_code_life`
