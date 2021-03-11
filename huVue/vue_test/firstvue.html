@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue (runoob.com)</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+ 
+</head>
+<style>
+.class1{
+  background: #444;
+  color: #eee;
+}
+</style>
+<body>
+<div id="app">
+	<label for="r1">修改颜色</label>
+	<input type="checkbox" v-model="use" id="r1">
+	<br><br>
+	<div v-bind:class="{'class1':use}">
+		v-bind:class command
+	</div>
+	
+	{{5 + 5}}<br />
+	{{ok ? 'YES':'NO'}}<br />
+	{{message.split('').reverse().join()}}
+	<div v-bind:id="'liit-' +id">cainiao</div>
+   
+   <p v-if="seen">现在你看到我了</p>
+   <pre><a v-bind:href="url">链接</a></pre>
+   <a v-on:click="doSomething">点击事件</a>
+   
+     <p>{{ msg }}</p>
+     <input v-model="msg">
+	 
+	 <br><br />
+	 {{ params | capitalize }}
+	 <br />
+	
+	<!-- if else-->
+	<div v-if="Math.random() > 0.5">
+	  Sorry
+	</div>
+	<div v-else>
+		Not Sorry
+	</div>
+	
+	<!-- if else if  -->
+	<div v-if="type=== 'A'">
+		A
+	</div>
+	<div v-else-if="type==='B'">
+		B
+	</div>
+	<div v-else-if="type==='C'">
+		C
+	</div>
+	<div v-else>
+		D
+	</div>
+	
+	<!-- 循环 --> 
+	 <ol>
+		 <li v-for="site in sites">
+			 {{site.name}}
+			 
+		 </li>
+	 </ol>
+	 
+	 <ul>
+		 <template v-for="site in sites">
+			 <li>{{site.name}}</li>
+             <li>-----------</li>
+		 </template>
+		 
+	 </ul>
+	 
+	 <ul>
+		 <li v-for="value in object">
+			{{value}}
+		 </li>
+	 </ul>
+	<p>原始字符串: {{ message }}</p>
+	 <p>计算后反转字符串: {{ reversedMessage }}</p>
+	 
+	 <p style="font-size: 25px;">计数器：{{counter}}</p>
+	 <button @click="counter++" style="font-size: 25px;">点我</button>
+	 
+</div>
+	
+<script>
+var vm= new Vue({
+  el: '#app',
+  data: {
+	use:false,
+	ok:true,
+	message:"runoob",
+	id:1,
+	seen:true,
+	url:'http://www.runoob.com',
+	msg:"输入的值",
+	params:"runoob",
+	type:'A',
+	counter :1,
+	sites:[
+		{name:'Runoob'},
+		{name:'Google'},
+		{name:'Taobao'},
+	],
+	object:{
+		name:'此案哦i就',
+		url:'http://www.runoob.com',
+		slogan:'sdfwiefj'
+	}
+  },
+  methods:{
+	  doSomething:function function_name () {
+	  	 this.message = this.msg;
+	  }
+  },
+
+  filters: { // 过滤器
+      capitalize: function (value) {
+        if (!value) return ''
+        value = value.toString()
+        return value.charAt(0).toUpperCase() + value.slice(1)
+      }
+    },
+  computed:{ //计算属性
+  		reversedMessage:function(){
+  			  return this.message.split('').reverse().join('')
+  	}
+	}
+});
+
+vm.$watch('counter',function(value1,value2){
+	alert('从：'+value2+'增加到'+value1)
+})
+</script>
+</body>
+</html>		

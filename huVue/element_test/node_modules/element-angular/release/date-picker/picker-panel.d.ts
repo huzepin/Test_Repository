@@ -1,0 +1,31 @@
+import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ElDataPicker } from './picker';
+export declare type DateModelItem = {
+    month: number;
+    year: number;
+    yearRange: number[];
+};
+export declare class ElDatePickerPanel implements OnInit, OnChanges {
+    root: ElDataPicker;
+    show: boolean;
+    width: number;
+    model: number;
+    hiddenDay: boolean;
+    panelAbsolute: boolean;
+    panelIndex: number;
+    modelChange: EventEmitter<number>;
+    shortcuts: boolean;
+    showTime: boolean;
+    currentView: string;
+    dateShowModels: DateModelItem;
+    constructor(root: ElDataPicker);
+    showPicker(pickPath: string): void;
+    updateDate(): void;
+    datePickChangeHandle(time: number): void;
+    monthPickChangeHandle(time: number): void;
+    yearPickChangeHandle(time: number): void;
+    nextYear(step: number): void;
+    nextMonth(step: number): void;
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+}
